@@ -81,4 +81,26 @@ public class TarjetaException {
         }
     }
 
+    public ResponseEntity<Map<String, String>> eliTarjeta(){
+        try {
+            Map<String, String> body = new HashMap<>();
+            body.put("Código de respuesta", "00");
+            body.put("Mensaje", "Se ha eliminado la tarjeta");            
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public ResponseEntity<Map<String, String>> eliNoTarjeta(){
+        try {
+            Map<String, String> body = new HashMap<>();
+            body.put("Código de respuesta", "01");
+            body.put("Mensaje", "No se ha eliminado la tarjeta");            
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

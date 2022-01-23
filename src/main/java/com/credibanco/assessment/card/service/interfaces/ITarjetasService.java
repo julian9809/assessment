@@ -20,4 +20,6 @@ public interface ITarjetasService {
 
     void saveActivacion(TarjetaDTO tarjeta);
 
+    void deleteById(String id);
+
 }

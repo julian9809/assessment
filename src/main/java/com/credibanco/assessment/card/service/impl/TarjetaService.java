@@ -79,4 +79,9 @@ public class TarjetaService implements ITarjetasService {
 
         return MHelpers.modelMapper().map(tarjetas.get(), TarjetaDTO.class);
     }
+
+    @Override
+    public void deleteById(String id) {
+        this.tarjetaRepository.deleteById(id);
+    }
 }
