@@ -33,4 +33,38 @@ public class TarjetaException {
         }
     }
 
+    public ResponseEntity<Map<String, String>> tarjetaNoExiste(){
+        try {
+            Map<String, String> body = new HashMap<>();
+            body.put("Código de respuesta", "01");
+            body.put("Mensaje", "Tarjeta no existe");            
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public ResponseEntity<Map<String, String>> numValInv(){
+        try {
+            Map<String, String> body = new HashMap<>();
+            body.put("Código de respuesta", "02");
+            body.put("Mensaje", "Número de validación inválido");            
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public ResponseEntity<Map<String, String>> exitoActivacion(String panEnmascarado){
+        try {
+            Map<String, String> body = new HashMap<>();
+            body.put("Código de respuesta", "00");
+            body.put("Mensaje", "Éxito");
+            body.put("PAN", panEnmascarado);
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

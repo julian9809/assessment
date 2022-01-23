@@ -5,9 +5,9 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.*;
 
+import com.credibanco.assessment.card.dto.CTarjetaDTO;
 import com.credibanco.assessment.card.exceptions.TarjetaException;
-import com.credibanco.assessment.card.model.TarjetaModel;
-import com.credibanco.assessment.card.service.impl.TarjetaService;
+import com.credibanco.assessment.card.service.interfaces.ITarjetasService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/crearTarjeta")
 public class TarjetaController {
     @Autowired
-    TarjetaService tarjetaService;
+    private ITarjetasService tarjetaService;
 
     
     @PostMapping()
-    public ResponseEntity<Map<String, String>> guardarTarjeta(@RequestBody TarjetaModel tarjeta){
+    public ResponseEntity<Map<String, String>> guardarTarjeta(@RequestBody CTarjetaDTO tarjeta){
 
         TarjetaException tarjetaException = new TarjetaException();
 
@@ -35,6 +35,8 @@ public class TarjetaController {
 
         String panEnmascarado = "";
         panEnmascarado = tarjeta.getNumTarjeta().substring(0,6)+"******"+tarjeta.getNumTarjeta().substring(12);
+
+        this.tarjetaService.save(tarjeta);
 
         return tarjetaException.exito(tarjeta.getNumValidacion(), panEnmascarado, tarjeta.getId());
     }
