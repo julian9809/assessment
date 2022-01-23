@@ -24,7 +24,7 @@ public class ActivarController {
         TarjetaException tarjetaException = new TarjetaException();
         TarjetaDTO tarjeta = this.tarjetaService.findByNumTarjeta(numTarjeta);
 
-        if (tarjeta.getNumTarjeta() == null || tarjeta.getNumValidacion().isEmpty()|| tarjeta.getNumTarjeta().length() < 16 || tarjeta.getNumTarjeta().length() > 16) {
+        if (tarjeta == null) {
             return tarjetaException.tarjetaNoExiste();
         }
 

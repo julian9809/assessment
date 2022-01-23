@@ -68,4 +68,15 @@ public class TarjetaService implements ITarjetasService {
         this.tarjetaRepository.save(tarjetas);
         
     }
+
+    @Override
+    public TarjetaDTO findById(String id) {
+        Optional<TarjetaModel> tarjetas = this.tarjetaRepository.findById(id);
+
+        if(!tarjetas.isPresent()) {
+            return null;
+        }
+
+        return MHelpers.modelMapper().map(tarjetas.get(), TarjetaDTO.class);
+    }
 }

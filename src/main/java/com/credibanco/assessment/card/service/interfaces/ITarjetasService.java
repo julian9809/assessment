@@ -12,6 +12,8 @@ public interface ITarjetasService {
     
     List<TarjetaDTO> findAll();
 
+    TarjetaDTO findById(String id);
+
     TarjetaDTO findByNumTarjeta(String numTarjeta);
 
     void save(CTarjetaDTO tarjeta);

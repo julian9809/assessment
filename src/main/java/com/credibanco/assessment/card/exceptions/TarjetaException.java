@@ -67,4 +67,18 @@ public class TarjetaException {
         }
     }
 
+    public ResponseEntity<Map<String, String>> consultaExitosa(String panEnmascarado, String titular, String cedula, String telefono, String estado){
+        try {
+            Map<String, String> body = new HashMap<>();            
+            body.put("PAN", panEnmascarado);
+            body.put("Titular", titular);
+            body.put("Cédula", cedula);
+            body.put("Teléfono", telefono);
+            body.put("Estado", estado);
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
