@@ -16,12 +16,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TarjetaService implements ITarjetasService {
-    //@Autowired
-    //TarjetaRepository tarjetaRepository;    
-
-    //public TarjetaModel guardarTarjeta(TarjetaModel tarjeta){        
-    //    return tarjetaRepository.save(tarjeta);
-    //}
 
     @Autowired
     private TarjetaRepository tarjetaRepository;    

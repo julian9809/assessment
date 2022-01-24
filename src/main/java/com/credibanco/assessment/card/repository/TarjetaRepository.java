@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface TarjetaRepository extends CrudRepository<TarjetaModel, String>{
-    //public abstract ArrayList<TarjetaModel> findByNumTarjeta(String numTarjeta);
 
     @Transactional(readOnly = true)
     Optional<TarjetaModel> findByNumTarjeta(String numTarjeta);
